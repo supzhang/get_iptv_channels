@@ -21,11 +21,11 @@ STBType = ''
 STBVersion = ''
 UserAgent = ''
 ```
-#使用方法 
+# 使用方法 
 ```
 python3 get_iptv_channels
 ```
-#其他问题
+# 其他问题
 ## 参数获取
 UserID mac STBID ip STBType STBVersion UserAgent信息可由抓包以及查看机顶盒背面获得
 ## 秘钥获取 
