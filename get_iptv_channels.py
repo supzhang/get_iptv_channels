@@ -214,29 +214,29 @@ def get_channels(key):
     print('仅供测试使用，用于成都电信IPTV，其他地区请自行更改get_token中的url')
     while len(key) != 8:
         key = input('请输入8位数的key:')
-        try:
-            host, cookies, usertoken, stbid = getSession(key)
-            if len(cookies['JSESSIONID']) < 5:
-                print('未获取到SESSION，请检查：key、MAC、stbid、UserID等已正确配置！')
-                return
-        except Exception as e:
-            print('获取SESSION失败,请检查网络！:%s'%e)
+    try:
+        host, cookies, usertoken, stbid = getSession(key)
+        if len(cookies['JSESSIONID']) < 5:
+            print('未获取到SESSION，请检查：key、MAC、stbid、UserID等已正确配置！')
             return
-        print('已经获取到session:\nusertoken:%s,\nJSESSIONID:%s'%(usertoken,cookies['JSESSIONID']))
-        channels = get_channel_list(host,usertoken,cookies,stbid)
-        ftxt = open(save_dir_txt,'w')
-        fm3u = open(save_dir_m3u,'w')
-        m3uline1 = '#EXTM3U\n'
-        fm3u.write(m3uline1)
-        ftxt.write(date_now)
-        ftxt.write('\n组播地址列表--by:老张\n本次共共获取频道数量：%s\n可直接将以下信息复制到EXCEL\n'%(len(channels)))
-        ftxt.write('%s\t%s\t%s\t%s\n'%('频道ID','频道名称','组拔地址','回放地址'))
-        for channel in channels:
-            m3uline = '#EXTINF:-1 ,%s\nrtp://%s\n'%(channel[1],channel[2])
-            txtline = '%s\t%s\t%s\t%s\n'%(channel[0],channel[1],channel[2],channel[5])
-            ftxt.write(txtline)
-            fm3u.write(m3uline)
-        ftxt.close()
-        fm3u.close()
+    except Exception as e:
+        print('获取SESSION失败,请检查网络！:%s'%e)
+        return
+    print('已经获取到session:\nusertoken:%s,\nJSESSIONID:%s'%(usertoken,cookies['JSESSIONID']))
+    channels = get_channel_list(host,usertoken,cookies,stbid)
+    ftxt = open(save_dir_txt,'w')
+    fm3u = open(save_dir_m3u,'w')
+    m3uline1 = '#EXTM3U\n'
+    fm3u.write(m3uline1)
+    ftxt.write(date_now)
+    ftxt.write('\n组播地址列表--by:老张\n本次共共获取频道数量：%s\n可直接将以下信息复制到EXCEL\n'%(len(channels)))
+    ftxt.write('%s\t%s\t%s\t%s\n'%('频道ID','频道名称','组拔地址','回放地址'))
+    for channel in channels:
+        m3uline = '#EXTINF:-1 ,%s\nrtp://%s\n'%(channel[1],channel[2])
+        txtline = '%s\t%s\t%s\t%s\n'%(channel[0],channel[1],channel[2],channel[5])
+        ftxt.write(txtline)
+        fm3u.write(m3uline)
+    ftxt.close()
+    fm3u.close()
 get_channels(key) #获取组播频道列表
 #find_key(Authenticator) #测试KEY
