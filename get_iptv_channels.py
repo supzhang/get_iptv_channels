@@ -238,5 +238,5 @@ def get_channels(key):
             fm3u.write(m3uline)
         ftxt.close()
         fm3u.close()
-#get_channels(key)
-find_key(Authenticator)
+get_channels(key) #获取组播频道列表
+#find_key(Authenticator) #测试KEY
