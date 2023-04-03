@@ -1,13 +1,13 @@
 电信IPTV组拔及回放地址获取
 ===
-#项目功能 
+# 项目功能 
 - 基于python3的数据抓取 
 - 通过IPTV线路获取电信IPTV组拔地址以及回放的地址  
 - 生成txt及m3u文件
-#使用范围 
+# 使用范围 
 - 成都电信IPTV
 - 其他地区及其他运营商估计大同小异（未测试）
-#使用前提 
+# 使用前提 
 - 必须获取到IPTV接口的IP地址
 - 必须获取到秘钥key
 - 必须获取到UserID mac STBID ip STBType STBVersion UserAgent信息
